@@ -18,13 +18,12 @@ Helm has become Kubernetes's de facto package manager, allowing teams to deploy 
 
 Consider a scenario where you rely on the ServiceMonitor CR or specific common labels for monitoring, but the third-party Helm chart does not provide the necessary templates or customization options in `helm templates`. Additionally, if you need to manage the chart in Git and deploy it using GitOps in an air-gapped environment, maintaining consistency and security becomes even more challenging. This is where an Overlay Chart comes to the rescue.
 
-What is a Overlay Chart?
-========================
+## What is a Overlay Chart?
 
 A Overlay Chart is a Helm chart that acts as a layer around a third-party Helm chart, allowing customization and compliance enforcement without modifying the upstream chart. This method provides better control, maintainability, and consistency.
 
-Why Use Overlay Charts?
-=======================
+### Why Use Overlay Charts?
+
 
 ✔ Avoids direct modifications to third-party charts, making future updates easier.  
 ✔ Allows enterprises to apply custom configurations, security policies, and monitoring settings.  
@@ -34,19 +33,16 @@ Why Use Overlay Charts?
 
 Photo by [Hannah Busing](https://unsplash.com/@hannahbusing?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral)
 
-Steps for enterprise usage.
-===========================
+# Steps for enterprise usage.
 
-1. Use an Internal Helm Repository
-===================================
 
-Why?
-====
+## 1. Use an Internal Helm Repository
+
+### Why?
 
 Directly pulling third-party Helm charts from public repositories like ArtifactHub, Bitnami, Quay, etc increases security risks and dependency on external sources.
 
-Best Practices:
-===============
+### Best Practices:
 
 ✔ Store third-party Helm charts in an internal repository such as Harbor, JFrog Artifactory, or AWS ECR.  
 ✔ Only approved, security-scanned charts should be stored in the internal registry.  
@@ -62,16 +58,13 @@ helm pull ingress-nginx/ingress-nginx --version 4.12.0
 helm push ingress-nginx-4.12.0.tgz oci://my-internal-registry/myhelm
 ```
 
-2. Overlay Chart with Pinned Chart Versions
-============================================
+## 2. Overlay Chart with Pinned Chart Versions
 
-Why?
-====
+### Why?
 
 Using the latest or unpinned versions can introduce breaking changes or security vulnerabilities.
 
-Best Practices:
-===============
+### Best Practices:
 
 ✔ Always specify a pinned version in `Chart.yaml`.  
 ✔ Maintain a staging/testing environment before upgrading charts in production.  
@@ -205,16 +198,13 @@ Example: Helm Diff for Upgrade Validation
 helm diff upgrade ingress-nginx-overlay my-internal-repo/ingress-nginx-overlay
 ```
 
-3. Scan for Security Vulnerabilities
-=====================================
+## 3. Scan for Security Vulnerabilities
 
-Why?
-====
+### Why?
 
 Third-party charts might introduce security vulnerabilities through container images or misconfigurations.
 
-Best Practices:
-===============
+### Best Practices:
 
 ✔ Use Trivy or Grype to scan Helm charts & the associated container image for vulnerabilities before deployment.  
 ✔ Enforce non-root execution and minimal container privileges.  
@@ -227,16 +217,13 @@ Example: Scanning a Helm Chart for Vulnerabilities
 trivy helm my-internal-registry/myhelm/ingress-nginx
 ```
 
-4. Override Default Configurations Securely
-============================================
+## 4. Override Default Configurations Securely
 
-Why?
-====
+### Why?
 
 Default values in third-party Helm charts may not align with enterprise security and performance policies.
 
-Best Practices:
-===============
+### Best Practices:
 
 ✔ Store overrides in a dedicated `values.yaml` file instead of modifying the upstream chart.  
 ✔ Disable unused features to reduce the attack surface.  
@@ -255,16 +242,13 @@ controller:
     allowPrivilegeEscalation: false
 ```
 
-5. Implement CI/CD and GitOps for Helm Deployments
-===================================================
+## 5. Implement CI/CD and GitOps for Helm Deployments
 
-Why?
-====
+### Why?
 
 Manual Helm deployments lead to inconsistencies and lack of traceability.
 
-Best Practices:
-===============
+### Best Practices:
 
 ✔ Use GitOps tools like ArgoCD or FluxCD to automate Helm deployments. ✔ Integrate Helm into CI/CD pipelines (GitHub Actions, GitLab CI, Jenkins).  
 ✔ Enable automated rollback in case of failed upgrades.
@@ -298,16 +282,13 @@ spec:
       - CreateNamespace=true  # Ensure the namespace exists before deploying
 ```
 
-6. Monitor and Audit Helm Releases
-===================================
+## 6. Monitor and Audit Helm Releases
 
-Why?
-====
+### Why?
 
 Lack of visibility into Helm releases can lead to undetected misconfigurations or security incidents.
 
-Best Practices:
-===============
+### Best Practices:
 
 ✔ Use Prometheus, Loki, or ELK for monitoring and logging Helm deployments.  
 ✔ Periodically audit Helm releases using `helm history`.  
@@ -320,16 +301,13 @@ Example: Checking Helm Release History
 helm history ingress-nginx-overlay
 ```
 
-7. Enable Rollback and Backup Strategies
-=========================================
+## 7. Enable Rollback and Backup Strategies
 
-Why?
-====
+### Why?
 
 Failed Helm upgrades can lead to downtime and data loss.
 
-Best Practices:
-===============
+### Best Practices:
 
 ✔ Enable Helm rollback capabilities.  
 ✔ Use Velero to back up Kubernetes resources before upgrades.  
@@ -349,8 +327,7 @@ Example: Backup Helm Resources with Velero
 velero backup create ingress-nginx-overlay-backup --include-namespaces web
 ```
 
-Conclusion
-==========
+# Conclusion
 
 Managing third-party Helm charts in an enterprise requires a structured approach to security, governance, and automation. The table below summarizes the key best practices:
 
