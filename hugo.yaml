@@ -1,4 +1,4 @@
-baseURL: "https://containeers.github.io/about/"
+baseURL: "https://containeers.github.io/"
 languageCode: "en-us"
 title: "Containeers"
 theme: hugo-profile
