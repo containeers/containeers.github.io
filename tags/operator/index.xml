@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Operator on Containeers</title><link>https://containeers.github.io/about/tags/operator/</link><description>Recent content in Operator on Containeers</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 24 Jan 2025 18:00:00 +0000</lastBuildDate><atom:link href="https://containeers.github.io/about/tags/operator/index.xml" rel="self" type="application/rss+xml"/><item><title>Syncer Operator</title><link>https://containeers.github.io/about/blogs/config_syncer/</link><pubDate>Fri, 24 Jan 2025 18:00:00 +0000</pubDate><guid>https://containeers.github.io/about/blogs/config_syncer/</guid><description>&lt;h1 id="syncer-operator">Syncer Operator&lt;/h1>
+&lt;p>The Syncer Operator is a Kubernetes operator that provides two Custom Resources to synchronize ConfigMaps and Secrets across namespaces. Built using the Operator SDK framework, it offers flexible and secure resource synchronization capabilities.&lt;/p>
+&lt;h2 id="features">Features&lt;/h2>
+&lt;ul>
+&lt;li>ConfigMapSync: Sync multiple ConfigMaps from source namespace to target namespaces&lt;/li>
+&lt;li>SecretSync: Sync multiple Secrets from source namespace to target namespaces&lt;/li>
+&lt;li>Automatic reconciliation when source resources change&lt;/li>
+&lt;li>Independent control over ConfigMap and Secret synchronization&lt;/li>
+&lt;li>Granular RBAC permissions&lt;/li>
+&lt;li>Target namespace selection by:
+&lt;ul>
+&lt;li>Explicit namespace list&lt;/li>
+&lt;li>Label selector&lt;/li>
+&lt;li>Both (combined targeting)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="architecture">Architecture&lt;/h2>
+&lt;pre tabindex="0">&lt;code class="language-mermaid" data-lang="mermaid">graph TD
+ A[ConfigMapSync Controller] --&amp;gt;|Watches| B[ConfigMapSync CRD]
+ A --&amp;gt;|Watches| C[ConfigMaps]
+ A --&amp;gt;|Watches| D[Namespaces]
+ B --&amp;gt;|Defines| E[Source Namespace]
+ B --&amp;gt;|Defines| F[Target Selection]
+ F --&amp;gt;|List| G[Explicit Namespaces]
+ F --&amp;gt;|Labels| H[Namespace Labels]
+ A --&amp;gt;|Creates/Updates| I[Synced ConfigMaps]
+
+ J[SecretSync Controller] --&amp;gt;|Watches| K[SecretSync CRD]
+ J --&amp;gt;|Watches| L[Secrets]
+ J --&amp;gt;|Watches| M[Namespaces]
+ K --&amp;gt;|Defines| N[Source Namespace]
+ K --&amp;gt;|Defines| O[Target Selection]
+ O --&amp;gt;|List| P[Explicit Namespaces]
+ O --&amp;gt;|Labels| Q[Namespace Labels]
+ J --&amp;gt;|Creates/Updates| R[Synced Secrets]
+&lt;/code>&lt;/pre>&lt;h2 id="installation">Installation&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>Install the operator:&lt;/p></description></item></channel></rss>
