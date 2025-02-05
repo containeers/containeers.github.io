@@ -4,17 +4,16 @@ date: 2025-01-24T18:00:00
 draft: false
 github_link: "https://github.com/containeers/syncer"
 author: "Sandarsh"
+mermaid: true
 tags:
   - Kubernetes
   - Operator
   - ConfigMap
   - Secret
-image: /images/post.jpg
+image: https://images.unsplash.com/photo-1667372335936-3dc4ff716017?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTIyfHx8ZW58MHx8fHx8
 description: "A Kubernetes operator to synchronize ConfigMaps and Secrets across namespaces"
 toc: 
 ---
-
-# Syncer Operator
 
 The Syncer Operator is a Kubernetes operator that provides two Custom Resources to synchronize ConfigMaps and Secrets across namespaces. Built using the Operator SDK framework, it offers flexible and secure resource synchronization capabilities.
 
@@ -55,12 +54,14 @@ graph TD
 
 ## Installation
 
-1. Install the operator:
+1.Install the operator:
+
    ```bash
    make deploy IMG=your-registry/syncer:tag
    ```
 
-2. Create a ConfigMapSync resource with label selector:
+2.Create a ConfigMapSync resource with label selector:
+
    ```yaml
    apiVersion: syncer.containeers.com/v1alpha1
    kind: ConfigMapSync
@@ -81,7 +82,8 @@ graph TD
        - name: config2
    ```
 
-3. Create a SecretSync resource with label selector:
+3.Create a SecretSync resource with label selector:
+
    ```yaml
    apiVersion: syncer.containeers.com/v1alpha1
    kind: SecretSync
@@ -126,17 +128,18 @@ graph TD
 
 ## Development
 
-1. Clone the repository:
+1.Clone the repository
+
    ```bash
    git clone https://github.com/containeers/syncer
    ```
 
-2. Install dependencies:
+2.Install dependencies
    ```bash
    go mod tidy
    ```
-
-3. Run locally:
+   
+3.Run locally
    ```bash
    make install run
    ```
