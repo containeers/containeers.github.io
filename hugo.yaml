@@ -12,7 +12,8 @@ outputs:
     - "HTML"
     - "RSS"
 
-Paginate: 3
+pagination:
+  pagerSize: 3
 enableRobotsTXT: true
 # disqusShortname: your-disqus-shortname
 # googleAnalytics: G-MEASUREMENT_ID
@@ -193,7 +194,7 @@ params:
           enable: false
           name: "View the project"
         content: |
-          - Leading end-to-end platform ownership for TikTok’s US Edge CDN, ensuring high availability, scalability, and reliability across a globally distributed infrastructure.
+          - Leading end-to-end platform ownership for TikTok's US Edge CDN, ensuring high availability, scalability, and reliability across a globally distributed infrastructure.
           - Architected and operate on-prem Kubernetes clusters supporting multi-terabyte-per-second data flow, critical to TikTok's low-latency edge delivery.
           - Built and maintained robust CI/CD pipelines for infrastructure and application deployment, accelerating delivery velocity while ensuring stability.
           - Implemented a real-time observability stack, enabling intelligent traffic-based load balancing and proactive failure detection across US edge sites.
