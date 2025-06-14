@@ -185,6 +185,22 @@ params:
     enable: true
     # title: "Custom Name"
     items:
+      - job: "Tech Lead SRE - Platform Engineering"
+        company: "TikTok - USDS"
+        companyUrl: "https://tiktok.com"
+        date: "Feb 2025 - Present"
+        featuredLink:
+          enable: false
+          name: "View the project"
+        content: |
+          - Leading end-to-end platform ownership for TikTok’s US Edge CDN, ensuring high availability, scalability, and reliability across a globally distributed infrastructure.
+          - Architected and operate on-prem Kubernetes clusters supporting multi-terabyte-per-second data flow, critical to TikTok's low-latency edge delivery.
+          - Built and maintained robust CI/CD pipelines for infrastructure and application deployment, accelerating delivery velocity while ensuring stability.
+          - Implemented a real-time observability stack, enabling intelligent traffic-based load balancing and proactive failure detection across US edge sites.
+          - Drove DNS performance optimization using CoreDNS, NodeLocal DNS, and custom DNS recursors, reducing latency and improving request resolution across clusters.
+          - Spearheaded performance tuning and operational excellence initiatives across all layers of the edge platform—networking, compute, and traffic management.
+          - Act as the primary point of accountability for reliability engineering, incident response, and platform lifecycle—from design through production support.
+
       - job: "Associate Director - DevOps"
         company: "Verizon"
         companyUrl: "https://verizon.com"
